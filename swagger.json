@@ -1,0 +1,5310 @@
+{
+    "schemes": [],
+    "swagger": "2.0",
+    "info": {
+        "description": "API for AIOZ W3AI Platform",
+        "title": "AIOZ-W3AI-Platform API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "",
+    "basePath": "/api/v1/",
+    "paths": {
+        "/api-key/balance": {
+            "get": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Get Api Key Balance",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Wallet"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/model/{id}/info": {
+            "get": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Get Api Key Model Info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Model's id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ApiKeyInfo"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/model/{id}/serving": {
+            "get": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Check Model Is Serving",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Model's id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.CheckModelIsServingResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/model/{id}/statistics": {
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Get Model Statistics",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Model's id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Get Api Key Statistics By Model Id Request",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.GetApiKeyStatisticsByModelIdRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetTaskStatisticsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/model/{id}/task/cost": {
+            "get": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Get cost to compute task by model api key",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Model's id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetCostToComputeTaskResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/permission": {
+            "get": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Get Api Key Permission",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetApiKeyPermissionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/statistics": {
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Get Api Key Statistics",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Get Api Key Statistics Request",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.GetApiKeyStatisticsByModelIdRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetTaskStatisticsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/task": {
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Distribute Task (Api-Key)",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Distribute Task Request",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.DistributeTaskRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/task/histories": {
+            "get": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Get Tasks Histories",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 10,
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 0,
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ApiKeyHistoryListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api-key/task/{id}/result": {
+            "get": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "api-key"
+                ],
+                "summary": "Get Task Result",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "api-key",
+                        "name": "x-api-key",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Task's id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetTaskResultResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.AddItemToCollectionRequest": {
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "properties": {
+                "item_id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "dataset",
+                        "model"
+                    ]
+                }
+            }
+        },
+        "models.AddNewAdminAccountRequest": {
+            "type": "object",
+            "required": [
+                "role"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string",
+                    "enum": [
+                        "admin",
+                        "mod"
+                    ]
+                }
+            }
+        },
+        "models.Admin": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.AdminAccountListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Admin"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.AdminCredential": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.Admin"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.AdminDashboardStatistics": {
+            "type": "object",
+            "properties": {
+                "bandwidth": {
+                    "type": "number"
+                },
+                "bandwidth_amount": {
+                    "type": "number"
+                },
+                "storage": {
+                    "type": "number"
+                },
+                "storage_amount": {
+                    "type": "number"
+                },
+                "total_amount_in": {
+                    "type": "string",
+                    "default": "0"
+                },
+                "total_amount_out": {
+                    "type": "string",
+                    "default": "0"
+                },
+                "total_amount_withdraw": {
+                    "type": "string",
+                    "default": "0"
+                },
+                "total_amount_withdraw_service": {
+                    "type": "string",
+                    "default": "0"
+                },
+                "total_task": {
+                    "type": "integer"
+                },
+                "total_task_fail": {
+                    "type": "integer"
+                },
+                "total_task_success": {
+                    "type": "integer"
+                },
+                "total_tx_in": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "total_tx_out": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "total_tx_withdraw": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "total_tx_withdraw_service": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "total_user_cost": {
+                    "type": "number"
+                },
+                "total_user_earnings": {
+                    "type": "number"
+                },
+                "total_user_register": {
+                    "type": "number"
+                },
+                "total_voucher_claimed": {
+                    "type": "integer"
+                },
+                "total_voucher_claimed_value": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.AdminDeleteUrlsRequest": {
+            "type": "object",
+            "properties": {
+                "urls": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.AdminLoginRequest": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.AdminSetVoucherForUserRequest": {
+            "type": "object",
+            "required": [
+                "user_id",
+                "voucher_code"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "string"
+                },
+                "voucher_code": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.AmountByDate": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.ApiKey": {
+            "type": "object",
+            "properties": {
+                "api_key": {
+                    "type": "string"
+                },
+                "api_price": {
+                    "type": "number"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "input_format": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "model_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "total_cost": {
+                    "type": "number"
+                },
+                "total_failed": {
+                    "type": "integer"
+                },
+                "total_request": {
+                    "type": "integer"
+                },
+                "total_success": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ApiKeyHistories": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "model_id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ApiKeyHistoryListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ApiKeyHistories"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.ApiKeyInfo": {
+            "type": "object",
+            "properties": {
+                "api_price": {
+                    "type": "number"
+                },
+                "commit_hash": {
+                    "type": "string"
+                },
+                "input_format": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "model_description": {
+                    "type": "string"
+                },
+                "model_id": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            }
+        },
+        "models.ApiKeyListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ApiKey"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.Branch": {
+            "type": "object",
+            "properties": {
+                "commit": {
+                    "$ref": "#/definitions/models.PayloadCommit"
+                },
+                "effective_branch_protection_name": {
+                    "type": "string"
+                },
+                "enable_status_check": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protected": {
+                    "type": "boolean"
+                },
+                "required_approvals": {
+                    "type": "integer"
+                },
+                "status_check_contexts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_can_merge": {
+                    "type": "boolean"
+                },
+                "user_can_push": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.BurnStatistics": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.AmountByDate"
+                    }
+                },
+                "total": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.CalculateCostToDownloadRepoContentResponse": {
+            "type": "object",
+            "properties": {
+                "cost": {
+                    "type": "number"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ChangeAdminPasswordRequest": {
+            "type": "object",
+            "properties": {
+                "new_password": {
+                    "type": "string"
+                },
+                "old_password": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ChangeMemberRoleRequest": {
+            "type": "object",
+            "required": [
+                "role"
+            ],
+            "properties": {
+                "role": {
+                    "description": "Role is the role of the member (required)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.ChangeUserPasswordRequest": {
+            "type": "object",
+            "required": [
+                "new_password",
+                "old_password"
+            ],
+            "properties": {
+                "new_password": {
+                    "description": "User's new password (required)",
+                    "type": "string"
+                },
+                "old_password": {
+                    "description": "User's old passowrd (required)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.CheckAvailableFreeDownloadRepoZipResponse": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "type": "boolean"
+                },
+                "cost_buy": {
+                    "type": "number"
+                },
+                "cost_download": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CheckModelIsServingResponse": {
+            "type": "object",
+            "properties": {
+                "consumers": {
+                    "type": "integer"
+                },
+                "serving": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.CheckModelsIsServingRequest": {
+            "type": "object",
+            "properties": {
+                "model_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.CheckUsernameExistResponse": {
+            "type": "object",
+            "properties": {
+                "existed": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.Comment": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.Owner"
+                },
+                "reacted": {
+                    "$ref": "#/definitions/models.Reaction"
+                },
+                "reactions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Reaction"
+                    }
+                },
+                "reactions_statistics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ReactionStats"
+                    }
+                },
+                "reacts_count": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "violated": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.CommentListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Comment"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.Commit": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "#/definitions/models.User"
+                },
+                "commit_affected_files": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "commit_data": {
+                    "$ref": "#/definitions/models.User"
+                },
+                "commit_meta": {
+                    "$ref": "#/definitions/models.CommitMeta"
+                },
+                "parents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.CommitMeta"
+                    }
+                },
+                "repo_commit": {
+                    "$ref": "#/definitions/models.RepoCommit"
+                },
+                "stats": {
+                    "$ref": "#/definitions/models.CommitStats"
+                }
+            }
+        },
+        "models.CommitMeta": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "sha": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CommitStats": {
+            "type": "object",
+            "properties": {
+                "additions": {
+                    "type": "integer"
+                },
+                "deletions": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.CommitTree": {
+            "type": "object",
+            "properties": {
+                "page": {
+                    "type": "integer"
+                },
+                "sha": {
+                    "type": "string"
+                },
+                "total_count": {
+                    "type": "integer"
+                },
+                "tree": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.GitEntry"
+                    }
+                },
+                "truncated": {
+                    "type": "boolean"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CommitUser": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Content": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "download_url": {
+                    "type": "string"
+                },
+                "encoding": {
+                    "type": "string"
+                },
+                "git_url": {
+                    "type": "string"
+                },
+                "is_lfs": {
+                    "type": "boolean"
+                },
+                "last_commit_at": {
+                    "type": "string"
+                },
+                "last_commit_message": {
+                    "type": "string"
+                },
+                "last_commit_sha": {
+                    "type": "string"
+                },
+                "links": {
+                    "$ref": "#/definitions/models.FileLink"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "sha": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "submodule_git_url": {
+                    "type": "string"
+                },
+                "target": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateAdminAccountRequest": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateApiKeyRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateCollectionRequest": {
+            "type": "object",
+            "required": [
+                "visibility"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "thumbnail": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ]
+                }
+            }
+        },
+        "models.CreateCommentRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateContentConfigRequest": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateDatasetDiscussionRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateDatasetRequest": {
+            "type": "object",
+            "required": [
+                "author_id",
+                "language",
+                "license",
+                "name",
+                "task_categories",
+                "visibility"
+            ],
+            "properties": {
+                "author_id": {
+                    "type": "string",
+                    "default": "00000000-0000-0000-0000-000000000000"
+                },
+                "cover": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "en",
+                        "vi"
+                    ]
+                },
+                "license": {
+                    "type": "string",
+                    "default": "mit"
+                },
+                "name": {
+                    "type": "string",
+                    "default": "default name"
+                },
+                "pretty_name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number",
+                    "default": 0
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "art",
+                        "medical"
+                    ]
+                },
+                "task_categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "feature-extraction",
+                        "text-to-video"
+                    ]
+                },
+                "thumbnail": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ]
+                }
+            }
+        },
+        "models.CreateDependencyRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateMetadataRequest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateModelDiscussionRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateModelRequest": {
+            "type": "object",
+            "required": [
+                "author_id",
+                "language",
+                "library",
+                "license",
+                "name",
+                "task",
+                "visibility"
+            ],
+            "properties": {
+                "author_id": {
+                    "type": "string",
+                    "default": "00000000-0000-0000-0000-000000000000"
+                },
+                "cover": {
+                    "type": "string"
+                },
+                "dependency_id": {
+                    "type": "string",
+                    "default": "00000000-0000-0000-0000-000000000000"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "en",
+                        "vi"
+                    ]
+                },
+                "library": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "tf"
+                    ]
+                },
+                "license": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "pretty_name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number",
+                    "default": 0
+                },
+                "task": {
+                    "type": "string"
+                },
+                "thumbnail": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ]
+                }
+            }
+        },
+        "models.CreateModelSettingRequest": {
+            "type": "object",
+            "required": [
+                "api_price",
+                "input_format",
+                "output_format",
+                "sys_req_cpu_cores",
+                "sys_req_gpu_memory",
+                "sys_req_ram"
+            ],
+            "properties": {
+                "api_price": {
+                    "type": "number"
+                },
+                "input_format": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "string"
+                },
+                "sys_req_cpu_cores": {
+                    "type": "integer"
+                },
+                "sys_req_gpu_memory": {
+                    "type": "integer"
+                },
+                "sys_req_ram": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.CreateMultipleMetadataRequest": {
+            "type": "object",
+            "properties": {
+                "metadata": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Metadata"
+                    }
+                }
+            }
+        },
+        "models.CreateMultipleVoucherRequest": {
+            "type": "object",
+            "required": [
+                "max_value",
+                "min_value"
+            ],
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "expired_at": {
+                    "type": "string",
+                    "example": "2024-12-12"
+                },
+                "max_value": {
+                    "type": "number"
+                },
+                "min_value": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.CreateOrganizationRequest": {
+            "type": "object",
+            "required": [
+                "type",
+                "username",
+                "visibility"
+            ],
+            "properties": {
+                "avatar": {
+                    "description": "Avatar is the avatar of the organization (optional)",
+                    "type": "string"
+                },
+                "bio": {
+                    "description": "Bio is the full name of the organization (optional)",
+                    "type": "string"
+                },
+                "full_name": {
+                    "description": "FullName is the full name of the organization (optional)",
+                    "type": "string"
+                },
+                "github_name": {
+                    "description": "GithubName is the github name of the organization (optional)",
+                    "type": "string"
+                },
+                "home_page": {
+                    "description": "HomePage is the home page of the organization (optional)",
+                    "type": "string"
+                },
+                "interests": {
+                    "description": "Interests is the list of interests of the organization (optional)",
+                    "type": "string"
+                },
+                "twitter_name": {
+                    "description": "TwitterName is the twitter name of the organization (optional)",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type is the type of the organization (allow: company, university, classroom, non_profit, community) (required)",
+                    "type": "string",
+                    "enum": [
+                        "company",
+                        "university",
+                        "classroom",
+                        "non_profit",
+                        "community"
+                    ]
+                },
+                "username": {
+                    "description": "Username is the username of the organization (required)",
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ]
+                }
+            }
+        },
+        "models.CreateOrganizationResponse": {
+            "type": "object",
+            "properties": {
+                "organization": {
+                    "$ref": "#/definitions/models.User"
+                }
+            }
+        },
+        "models.CreatePresignedUrlRequest": {
+            "type": "object",
+            "properties": {
+                "folder": {
+                    "type": "string"
+                },
+                "mime": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "org_username": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreatePresignedUrlResponse": {
+            "type": "object",
+            "properties": {
+                "download_url": {
+                    "type": "string"
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreatePublicKeyRequest": {
+            "type": "object",
+            "required": [
+                "key",
+                "title"
+            ],
+            "properties": {
+                "key": {
+                    "description": "Key is the ssh public key (required)",
+                    "type": "string"
+                },
+                "read_only": {
+                    "description": "ReadOnly is the flag to indicate if the key is read only (default: false) (optional)",
+                    "type": "boolean"
+                },
+                "title": {
+                    "description": "Title is the title of the key (required)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreatePublicKeyResponse": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "$ref": "#/definitions/models.PublicKey"
+                }
+            }
+        },
+        "models.CreateRepositoryContentRequest": {
+            "type": "object",
+            "properties": {
+                "branch_name": {
+                    "description": "BranchName is the name of the branch (required)",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "Email is the email of the committer (optional) (default: author's email)",
+                    "type": "string"
+                },
+                "files": {
+                    "description": "Files is the list of files to be created (required) (min:1, max:5, max file size: 50MB)",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.File"
+                    }
+                },
+                "message": {
+                    "description": "Commit message is the commit message (required)",
+                    "type": "string"
+                },
+                "new_branch_name": {
+                    "description": "NewBranchName is the name of the new branch (default usually master) (optional)",
+                    "type": "string"
+                },
+                "signoff": {
+                    "description": "Signoff is the flag to indicate if the commit is signed off (default: false) (optional)",
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "description": "Timestamp is the timestamp of the commit (default: now) (optional)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateTaskReviewsRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "point": {
+                    "type": "integer"
+                },
+                "task_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Credential": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "#/definitions/models.User"
+                }
+            }
+        },
+        "models.Dataset": {
+            "type": "object",
+            "properties": {
+                "author_avatar": {
+                    "type": "string"
+                },
+                "author_id": {
+                    "type": "string"
+                },
+                "cover": {
+                    "type": "string"
+                },
+                "create_by": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "discussions_count": {
+                    "type": "integer"
+                },
+                "downloads_count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_liked_by_user": {
+                    "type": "boolean"
+                },
+                "is_official": {
+                    "type": "boolean"
+                },
+                "is_released": {
+                    "type": "boolean"
+                },
+                "is_verified": {
+                    "type": "boolean"
+                },
+                "likes_count": {
+                    "type": "integer"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/models.DatasetMetadata"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "reacted": {
+                    "$ref": "#/definitions/models.Reaction"
+                },
+                "reactions_statistics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ReactionStats"
+                    }
+                },
+                "thumbnail": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string",
+                    "default": "public"
+                }
+            }
+        },
+        "models.DatasetListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Dataset"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.DatasetMetadata": {
+            "type": "object",
+            "properties": {
+                "dataset_id": {
+                    "type": "string",
+                    "default": "00000000-0000-0000-0000-000000000000"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "en",
+                        "vi"
+                    ]
+                },
+                "license": {
+                    "type": "string",
+                    "default": "mit"
+                },
+                "pretty_name": {
+                    "type": "string",
+                    "default": "default pretty name"
+                },
+                "size_category": {
+                    "type": "string",
+                    "default": "n\u003C1k"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "art"
+                    ]
+                },
+                "task_categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "text-to-image"
+                    ]
+                }
+            }
+        },
+        "models.DeleteDatasetRequest": {
+            "type": "object",
+            "properties": {
+                "repository_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DeleteListNotificationRequest": {
+            "type": "object",
+            "properties": {
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.DeleteModelRequest": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DeleteRepositoryContentRequest": {
+            "type": "object",
+            "properties": {
+                "branch_name": {
+                    "description": "BranchName is the name of the branch (required)",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Commit message is the commit message (required)",
+                    "type": "string"
+                },
+                "new_branch_name": {
+                    "description": "NewBranchName is the name of the new branch (default usually master) (optional)",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "Path is the path of the file to be deleted (optional)",
+                    "type": "string"
+                },
+                "sha": {
+                    "description": "Sha is the sha of the file to be deleted (required)",
+                    "type": "string"
+                },
+                "signoff": {
+                    "description": "Signoff is the flag to indicate if the commit is signed off (default: false) (optional)",
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.DeleteRepositoryContentResponse": {
+            "type": "object",
+            "properties": {
+                "commit": {
+                    "$ref": "#/definitions/models.FileCommit"
+                }
+            }
+        },
+        "models.DeleteUrlRequest": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Dependency": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DependencyListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Dependency"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.DiscussionCreated": {
+            "type": "object",
+            "properties": {
+                "comments_count": {
+                    "type": "integer"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_closed": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DiscussionListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.LiteDiscussion"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.DistributeTaskRequest": {
+            "type": "object",
+            "properties": {
+                "files": {
+                    "type": "array",
+                    "items": {}
+                },
+                "input_params": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "model_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DistributeTaskV1Request": {
+            "type": "object",
+            "properties": {
+                "files": {
+                    "type": "array",
+                    "items": {}
+                },
+                "input_param": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "model_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DownloadDatasetListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.LiteDownloadDataset"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.DownloadModelListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.LiteDownloadModel"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.EstimateCostRequest": {
+            "type": "object",
+            "required": [
+                "total_size"
+            ],
+            "properties": {
+                "total_size": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.File": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "Content is the content of the file in base64 format (optional)",
+                    "type": "string"
+                },
+                "operation": {
+                    "description": "Operation is the operation to be performed on the file (optional)",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "Path is the path of the file (optional)",
+                    "type": "string"
+                },
+                "sha": {
+                    "description": "Sha is the sha of the file (optional)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.FileCommit": {
+            "type": "object",
+            "properties": {
+                "commit_data": {
+                    "$ref": "#/definitions/models.CommitUser"
+                },
+                "commit_meta": {
+                    "$ref": "#/definitions/models.CommitMeta"
+                },
+                "commit_user": {
+                    "$ref": "#/definitions/models.CommitUser"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "parents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.CommitMeta"
+                    }
+                },
+                "tree": {
+                    "$ref": "#/definitions/models.CommitMeta"
+                }
+            }
+        },
+        "models.FileLink": {
+            "type": "object",
+            "properties": {
+                "git": {
+                    "type": "string"
+                },
+                "html": {
+                    "type": "string"
+                },
+                "self": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Follow": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetAdminDashboardStatisticsRequest": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "example": "2023-05-07"
+                },
+                "to": {
+                    "type": "string",
+                    "example": "2024-05-07"
+                }
+            }
+        },
+        "models.GetApiKeyByIdRequest": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "example": "2023-05-07"
+                },
+                "to": {
+                    "type": "string",
+                    "example": "2024-05-07"
+                }
+            }
+        },
+        "models.GetApiKeyPermissionResponse": {
+            "type": "object",
+            "properties": {
+                "limit_models": {
+                    "type": "boolean"
+                },
+                "models": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.GetApiKeyStatisticsByModelIdRequest": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "example": "2023-05-07"
+                },
+                "to": {
+                    "type": "string",
+                    "example": "2024-05-07"
+                }
+            }
+        },
+        "models.GetBranchesResponse": {
+            "type": "object",
+            "properties": {
+                "branches": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Branch"
+                    }
+                }
+            }
+        },
+        "models.GetCollaboratorsResponse": {
+            "type": "object",
+            "properties": {
+                "collaborators": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.User"
+                    }
+                }
+            }
+        },
+        "models.GetCommitHistoryResponse": {
+            "type": "object",
+            "properties": {
+                "commit": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Commit"
+                    }
+                },
+                "has_more": {
+                    "type": "boolean"
+                },
+                "last_page": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.GetCommitTreeResponse": {
+            "type": "object",
+            "properties": {
+                "tree": {
+                    "$ref": "#/definitions/models.CommitTree"
+                }
+            }
+        },
+        "models.GetCostToComputeTaskResponse": {
+            "type": "object",
+            "properties": {
+                "cost": {
+                    "type": "number"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetCostVerifyModelResponse": {
+            "type": "object",
+            "properties": {
+                "cost": {
+                    "type": "number"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetDatasetListByAdminRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "size_category": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "task_categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.GetDatasetListByAuthorRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "size_category": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "task_categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.GetDatasetListRequest": {
+            "type": "object",
+            "required": [
+                "filter_by"
+            ],
+            "properties": {
+                "filter_by": {
+                    "type": "string",
+                    "enum": [
+                        "community",
+                        "author",
+                        "official",
+                        "permission"
+                    ]
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "size_category": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "task_categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.GetLinkEmailCodeRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "description": "Password is the password of the user (required)",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "Username is the username of the user (required)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetLinkWalletAddressChallengeResponse": {
+            "type": "object",
+            "properties": {
+                "challenge": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetListCollectionByUsernameRequest": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetListCollectionRequest": {
+            "type": "object",
+            "required": [
+                "filter"
+            ],
+            "properties": {
+                "filter": {
+                    "type": "string",
+                    "default": "community",
+                    "enum": [
+                        "community",
+                        "author"
+                    ]
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetListModelVersioningsReponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ModelVersioningGroup"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.GetListPublicCollectionRequest": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetLiteOrganizationsResponse": {
+            "type": "object",
+            "properties": {
+                "organizations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.LiteOrganization"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.GetMeResponse": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/models.User"
+                }
+            }
+        },
+        "models.GetModelListByAdminRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "library": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetModelListByAuthorRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "library": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetModelListRequest": {
+            "type": "object",
+            "required": [
+                "filter_by"
+            ],
+            "properties": {
+                "filter_by": {
+                    "type": "string",
+                    "enum": [
+                        "community",
+                        "author",
+                        "official",
+                        "permission"
+                    ]
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "library": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetOffersResponse": {
+            "type": "object",
+            "properties": {
+                "offers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Offer"
+                    }
+                }
+            }
+        },
+        "models.GetOrganizationSettingResponse": {
+            "type": "object",
+            "properties": {
+                "allow_join_by_link": {
+                    "type": "boolean"
+                },
+                "allow_request_to_join": {
+                    "type": "boolean"
+                },
+                "auto_approve_join_request": {
+                    "type": "boolean"
+                },
+                "default_role": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "join_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetPublicDatasetListRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "size_category": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "task_categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.GetPublicKeysResponse": {
+            "type": "object",
+            "properties": {
+                "keys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.PublicKey"
+                    }
+                }
+            }
+        },
+        "models.GetPublicModelListRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "library": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10
+                },
+                "offset": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "search": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetPublicOrganizationMembersResponse": {
+            "type": "object",
+            "properties": {
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.LiteUser"
+                    }
+                }
+            }
+        },
+        "models.GetRepositoryContentMetadataResponse": {
+            "type": "object",
+            "properties": {
+                "contents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Content"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.GetRepositoryResponse": {
+            "type": "object",
+            "properties": {
+                "repository": {
+                    "$ref": "#/definitions/models.Repository"
+                }
+            }
+        },
+        "models.GetTaskResultResponse": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "status": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.GetTaskStatisticsResponse": {
+            "type": "object",
+            "properties": {
+                "total_cost": {
+                    "type": "integer"
+                },
+                "total_failed": {
+                    "type": "integer"
+                },
+                "total_request": {
+                    "type": "integer"
+                },
+                "total_success": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.GetUserByUsernameAndGuestIdResponse": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/models.LiteUser"
+                }
+            }
+        },
+        "models.GetUserOrganizationPermissionResponse": {
+            "type": "object",
+            "properties": {
+                "permission": {
+                    "$ref": "#/definitions/models.OrgPermission"
+                }
+            }
+        },
+        "models.GetUserOrganizationUsernamesResponse": {
+            "type": "object",
+            "properties": {
+                "usernames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.GetUserOrganizationsResponse": {
+            "type": "object",
+            "properties": {
+                "organizations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.OrganizationInfo"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.GetUserSpendingCostStatisticsByUserRequest": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "example": "2023-05-07"
+                },
+                "to": {
+                    "type": "string",
+                    "example": "2024-05-07"
+                }
+            }
+        },
+        "models.GetUserUploadStatisticsResponse": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "folders": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "storage": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.GetUserUploadsByFolderResponse": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "storage": {
+                    "type": "integer"
+                },
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.GitEntry": {
+            "type": "object",
+            "properties": {
+                "mode": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "sha": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GiteaUser": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "total_repos": {
+                    "type": "integer"
+                },
+                "total_size": {
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "wallet_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GiteaUserListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.GiteaUser"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.LikeDatasetListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.LiteLikeDataset"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.LikeModelListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.LiteLikeModel"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.ListTaskReviewsResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TaskReviews"
+                    }
+                },
+                "task_reviews_stats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TaskReviewsStatistics"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.LiteApiKey": {
+            "type": "object",
+            "properties": {
+                "api_key": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "model_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.LiteDiscussion": {
+            "type": "object",
+            "properties": {
+                "comments_count": {
+                    "type": "integer"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_closed": {
+                    "type": "boolean"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.Owner"
+                },
+                "reacted": {
+                    "$ref": "#/definitions/models.Reaction"
+                },
+                "reactions_statistics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ReactionStats"
+                    }
+                },
+                "reacts_count": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "violated": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.LiteDownloadDataset": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.Owner"
+                }
+            }
+        },
+        "models.LiteDownloadModel": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.Owner"
+                }
+            }
+        },
+        "models.LiteLikeDataset": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.Owner"
+                }
+            }
+        },
+        "models.LiteLikeModel": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.Owner"
+                }
+            }
+        },
+        "models.LiteOrganization": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "bio": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "created_by": {
+                    "type": "string"
+                },
+                "datasets_count": {
+                    "type": "integer"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "github_link": {
+                    "type": "string"
+                },
+                "github_name": {
+                    "type": "string"
+                },
+                "home_page": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "interests": {
+                    "type": "string"
+                },
+                "join_id": {
+                    "type": "string"
+                },
+                "models_count": {
+                    "type": "integer"
+                },
+                "org_team": {
+                    "type": "string"
+                },
+                "total_repos_size": {
+                    "type": "integer"
+                },
+                "twitter_link": {
+                    "type": "string"
+                },
+                "twitter_name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "verified": {
+                    "type": "boolean"
+                },
+                "visibility": {
+                    "type": "string"
+                },
+                "wallet": {
+                    "$ref": "#/definitions/models.Wallet"
+                },
+                "wallet_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.LiteUser": {
+            "type": "object",
+            "properties": {
+                "allow_request_to_join": {
+                    "type": "boolean"
+                },
+                "avatar_url": {
+                    "type": "string"
+                },
+                "bio": {
+                    "type": "string"
+                },
+                "followers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Follow"
+                    }
+                },
+                "followers_count": {
+                    "type": "integer"
+                },
+                "followings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Follow"
+                    }
+                },
+                "followings_count": {
+                    "type": "integer"
+                },
+                "github_link": {
+                    "type": "string"
+                },
+                "github_name": {
+                    "type": "string"
+                },
+                "home_page_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "interests": {
+                    "type": "string"
+                },
+                "invite_offers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Offer"
+                    }
+                },
+                "invite_offers_count": {
+                    "type": "integer"
+                },
+                "is_following": {
+                    "type": "boolean"
+                },
+                "join_id": {
+                    "type": "string"
+                },
+                "join_offers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Offer"
+                    }
+                },
+                "join_offers_count": {
+                    "type": "integer"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Member"
+                    }
+                },
+                "members_count": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "twitter_link": {
+                    "type": "string"
+                },
+                "twitter_name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "verified": {
+                    "type": "boolean"
+                },
+                "visibility": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.LoginWithPasswordRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.LoginWithWalletAddressResponse": {
+            "type": "object",
+            "properties": {
+                "challenge": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.MakeInviteOfferRequest": {
+            "type": "object",
+            "required": [
+                "org_username",
+                "role",
+                "username"
+            ],
+            "properties": {
+                "org_username": {
+                    "description": "OrgUsername is the username of the organization (required)",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "Role is the role of the new member (required)",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "Username is the username of the new member (required)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.MakeJoinOfferRequest": {
+            "type": "object",
+            "required": [
+                "join_id"
+            ],
+            "properties": {
+                "join_id": {
+                    "description": "OrgUsername is the username of the organization (required)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.MakeOfferResponse": {
+            "type": "object",
+            "properties": {
+                "offer": {
+                    "$ref": "#/definitions/models.Offer"
+                }
+            }
+        },
+        "models.MatchingDatasetsTagsRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "size_category": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "task_categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.MatchingModelsTagsRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "library": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string"
+                },
+                "tag_type": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Member": {
+            "type": "object",
+            "properties": {
+                "avatar_url": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Metadata": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ModelSetting": {
+            "type": "object",
+            "properties": {
+                "api_price": {
+                    "type": "number"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "input_format": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "model_id": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "sys_req_cpu_cores": {
+                    "type": "integer"
+                },
+                "sys_req_gpu_memory": {
+                    "type": "integer"
+                },
+                "sys_req_ram": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ModelVersioningGroup": {
+            "type": "object",
+            "properties": {
+                "commit_hash": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "dependency": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "input_format": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "model_id": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "platforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sys_require": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "test_result": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "verify_status": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ModelVersioningLite": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "string"
+                },
+                "test_result": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "verify_status": {
+                    "type": "string"
+                },
+                "verify_task_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ModifyRepoContentResponse": {
+            "type": "object",
+            "properties": {
+                "commit": {
+                    "$ref": "#/definitions/models.Commit"
+                }
+            }
+        },
+        "models.Notification": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "id": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.NotificationStatistics": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "total_read": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.Offer": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "integer"
+                },
+                "created_by": {
+                    "type": "string"
+                },
+                "exp_at": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "org_username": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.OrgPermission": {
+            "type": "object",
+            "properties": {
+                "can_create": {
+                    "type": "boolean"
+                },
+                "can_delete": {
+                    "type": "boolean"
+                },
+                "can_edit": {
+                    "type": "boolean"
+                },
+                "can_read": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.OrganizationInfo": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "org_type": {
+                    "type": "string"
+                },
+                "permission": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "type": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "verified": {
+                    "type": "boolean"
+                },
+                "visibility": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Owner": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PayloadCommit": {
+            "type": "object",
+            "properties": {
+                "added": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "author": {
+                    "$ref": "#/definitions/models.PayloadUser"
+                },
+                "committer": {
+                    "$ref": "#/definitions/models.PayloadUser"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "modified": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "removed": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "timestamp": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PayloadUser": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Permission": {
+            "type": "object",
+            "properties": {
+                "admin": {
+                    "type": "boolean"
+                },
+                "pull": {
+                    "type": "boolean"
+                },
+                "push": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.PublicKey": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "key_type": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ReactResponse": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.Reaction": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.Owner"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ReactionStats": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.RefreshAdminTokenRequest": {
+            "type": "object",
+            "properties": {
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.RefreshTokenResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.RemoveItemFromCollectionRequest": {
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "properties": {
+                "item_id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "dataset",
+                        "model"
+                    ]
+                }
+            }
+        },
+        "models.RepoCommit": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "#/definitions/models.CommitUser"
+                },
+                "committer": {
+                    "$ref": "#/definitions/models.CommitUser"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "tree": {
+                    "$ref": "#/definitions/models.CommitMeta"
+                }
+            }
+        },
+        "models.ReportContentRequest": {
+            "type": "object",
+            "properties": {
+                "reason": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Repository": {
+            "type": "object",
+            "properties": {
+                "allow_merge": {
+                    "type": "boolean"
+                },
+                "allow_rebase": {
+                    "type": "boolean"
+                },
+                "allow_rebase_merge": {
+                    "type": "boolean"
+                },
+                "allow_squash": {
+                    "type": "boolean"
+                },
+                "archived": {
+                    "type": "boolean"
+                },
+                "clone_url": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "default_branch": {
+                    "type": "string"
+                },
+                "default_merge_style": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "fork": {
+                    "type": "boolean"
+                },
+                "forks": {
+                    "type": "integer"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "has_pull_requests": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "mirror": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "original_url": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.User"
+                },
+                "parent": {
+                    "$ref": "#/definitions/models.Repository"
+                },
+                "permissions": {
+                    "$ref": "#/definitions/models.Permission"
+                },
+                "private": {
+                    "type": "boolean"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "ssh_url": {
+                    "type": "string"
+                },
+                "stars": {
+                    "type": "integer"
+                },
+                "template": {
+                    "type": "boolean"
+                },
+                "updated": {
+                    "type": "string"
+                },
+                "watchers": {
+                    "type": "integer"
+                },
+                "website": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ResetPasswordRequest": {
+            "type": "object",
+            "required": [
+                "code",
+                "email",
+                "password"
+            ],
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.SignUpRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TaskReviews": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "model_id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "#/definitions/models.Owner"
+                },
+                "point": {
+                    "type": "integer"
+                },
+                "result": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "task_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TaskReviewsStatistics": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "point": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.Transaction": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "aioz_usd_rate": {
+                    "type": "number"
+                },
+                "amount": {
+                    "type": "number"
+                },
+                "burn": {
+                    "type": "number"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "object_id": {
+                    "type": "string"
+                },
+                "object_type": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.TransactionListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Transaction"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                },
+                "total_amount": {
+                    "type": "number"
+                },
+                "total_value": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.TxIn": {
+            "type": "object",
+            "properties": {
+                "_": {
+                    "type": "boolean"
+                },
+                "amount": {
+                    "type": "string"
+                },
+                "block_number": {
+                    "type": "integer"
+                },
+                "cosmos_tx_hash": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "evm_tx_hash": {
+                    "type": "string"
+                },
+                "sender": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TxInListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TxIn"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.UpdateAdminInfoRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateAdminRequest": {
+            "type": "object",
+            "required": [
+                "role"
+            ],
+            "properties": {
+                "is_active": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string",
+                    "enum": [
+                        "admin",
+                        "mod"
+                    ]
+                }
+            }
+        },
+        "models.UpdateApiKeyRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateCollectionRequest": {
+            "type": "object",
+            "required": [
+                "visibility"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "thumbnail": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ]
+                }
+            }
+        },
+        "models.UpdateCommentRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateContentConfigRequest": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateDatasetMetadataRequest": {
+            "type": "object",
+            "required": [
+                "language",
+                "license",
+                "pretty_name",
+                "size_category",
+                "tags",
+                "task_categories"
+            ],
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "en",
+                        "vi"
+                    ]
+                },
+                "license": {
+                    "type": "string",
+                    "default": "mit"
+                },
+                "pretty_name": {
+                    "type": "string",
+                    "default": "default pretty name"
+                },
+                "size_category": {
+                    "type": "string",
+                    "default": "n\u003C1k"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "art"
+                    ]
+                },
+                "task_categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "text-to-image"
+                    ]
+                }
+            }
+        },
+        "models.UpdateDatasetRequest": {
+            "type": "object",
+            "properties": {
+                "cover": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number",
+                    "default": 0
+                },
+                "thumbnail": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ]
+                }
+            }
+        },
+        "models.UpdateDatasetStatusByAdminRequest": {
+            "type": "object",
+            "properties": {
+                "is_official": {
+                    "type": "boolean"
+                },
+                "is_released": {
+                    "type": "boolean"
+                },
+                "is_verified": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.UpdateDependencyRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateDiscussionRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "is_closed": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateJoinSettingsRequest": {
+            "type": "object",
+            "required": [
+                "allow_join_by_link",
+                "allow_request_to_join",
+                "auto_approve_join_request",
+                "default_role"
+            ],
+            "properties": {
+                "allow_join_by_link": {
+                    "description": "AllowJoinByLink is the flag to indicate if the organization allows join by link (required)",
+                    "type": "boolean"
+                },
+                "allow_request_to_join": {
+                    "description": "AllowRequestToJoin is the flag to indicate if the organization allows request to join (required)",
+                    "type": "boolean"
+                },
+                "auto_approve_join_request": {
+                    "description": "AutoApproveJoinRequest is the flag to indicate if the organization auto approves join request (required)",
+                    "type": "boolean"
+                },
+                "default_role": {
+                    "description": "DefaultRole is the default role when approve new member to organization (required)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateJoinSettingsResponse": {
+            "type": "object",
+            "properties": {
+                "allow_join_by_link": {
+                    "type": "boolean"
+                },
+                "allow_request_to_join": {
+                    "type": "boolean"
+                },
+                "auto_approve_join_request": {
+                    "type": "boolean"
+                },
+                "default_role": {
+                    "type": "string"
+                },
+                "join_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateListNotificationStatusRequest": {
+            "type": "object",
+            "properties": {
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateMetadataByIdRequest": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateModelMetadataRequest": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "en",
+                        "vi"
+                    ]
+                },
+                "library": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "tf",
+                        "jax"
+                    ]
+                },
+                "license": {
+                    "type": "string"
+                },
+                "pretty_name": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateModelRequest": {
+            "type": "object",
+            "properties": {
+                "cover": {
+                    "type": "string"
+                },
+                "dependency_id": {
+                    "type": "string",
+                    "default": "00000000-0000-0000-0000-000000000000"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number",
+                    "default": 0
+                },
+                "thumbnail": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateModelSettingRequest": {
+            "type": "object",
+            "properties": {
+                "api_price": {
+                    "type": "number"
+                },
+                "input_format": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "string"
+                },
+                "sys_req_cpu_cores": {
+                    "type": "integer"
+                },
+                "sys_req_gpu_memory": {
+                    "type": "integer"
+                },
+                "sys_req_ram": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.UpdateModelStatusByAdminRequest": {
+            "type": "object",
+            "properties": {
+                "is_official": {
+                    "type": "boolean"
+                },
+                "is_released": {
+                    "type": "boolean"
+                },
+                "is_verified": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.UpdateOrganizationByAdmin": {
+            "type": "object",
+            "required": [
+                "visibility"
+            ],
+            "properties": {
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ]
+                }
+            }
+        },
+        "models.UpdateOrganizationInfoRequest": {
+            "type": "object",
+            "required": [
+                "visibility"
+            ],
+            "properties": {
+                "avatar": {
+                    "description": "Avatar is the avatar of the organization (optional)",
+                    "type": "string"
+                },
+                "bio": {
+                    "description": "Bio is the full name of the organization (optional)",
+                    "type": "string"
+                },
+                "full_name": {
+                    "description": "FullName is the full name of the organization (optional)",
+                    "type": "string"
+                },
+                "github_link": {
+                    "description": "GithubLink is the github link of the organization (optional)",
+                    "type": "string"
+                },
+                "github_name": {
+                    "description": "GithubName is the github name of the organization (optional)",
+                    "type": "string"
+                },
+                "home_page": {
+                    "description": "HomePage is the home page of the organization (optional)",
+                    "type": "string"
+                },
+                "interests": {
+                    "description": "Interests is the list of interests of the organization (optional)",
+                    "type": "string"
+                },
+                "twitter_link": {
+                    "description": "TwitterLink is the twitter link of the organization (optional)",
+                    "type": "string"
+                },
+                "twitter_name": {
+                    "description": "TwitterName is the twitter name of the organization (optional)",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type is the type of the organization (optional)",
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ]
+                }
+            }
+        },
+        "models.UpdateReportedContentRequest": {
+            "type": "object",
+            "properties": {
+                "violated": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.UpdateTaskReviewsByTaskIdRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "point": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.UpdateUserProfileRequest": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "description": "Avatar is the avatar of the user (optional)",
+                    "type": "string"
+                },
+                "bio": {
+                    "description": "Bio is the full name of the user (optional)",
+                    "type": "string"
+                },
+                "full_name": {
+                    "description": "FullName is the full name of the user (optional)",
+                    "type": "string"
+                },
+                "github_link": {
+                    "description": "GithubLink is the github link of the user (optional)",
+                    "type": "string"
+                },
+                "github_name": {
+                    "description": "TwitterLink is the twitter link of the user (optional)",
+                    "type": "string"
+                },
+                "home_page_name": {
+                    "description": "HomePage is the homepage of the user (optional)",
+                    "type": "string"
+                },
+                "interests": {
+                    "description": "Interests is the interests of the user (optional)",
+                    "type": "string"
+                },
+                "twitter_link": {
+                    "description": "TwitterLink is the twitter link of the user (optional)",
+                    "type": "string"
+                },
+                "twitter_name": {
+                    "description": "TwitterName is the twitter name of the user (optional)",
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateVoucherRequest": {
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "expired_at": {
+                    "type": "string",
+                    "example": "2024-12-12"
+                },
+                "value": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.User": {
+            "type": "object",
+            "properties": {
+                "allow_request_to_join": {
+                    "type": "boolean"
+                },
+                "avatar_url": {
+                    "type": "string"
+                },
+                "bio": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "followers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Follow"
+                    }
+                },
+                "followers_count": {
+                    "type": "integer"
+                },
+                "followings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Follow"
+                    }
+                },
+                "followings_count": {
+                    "type": "integer"
+                },
+                "github_link": {
+                    "type": "string"
+                },
+                "github_name": {
+                    "type": "string"
+                },
+                "home_page_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "interests": {
+                    "type": "string"
+                },
+                "invite_offers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Offer"
+                    }
+                },
+                "invite_offers_count": {
+                    "type": "integer"
+                },
+                "is_following": {
+                    "type": "boolean"
+                },
+                "join_id": {
+                    "type": "string"
+                },
+                "join_offers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Offer"
+                    }
+                },
+                "join_offers_count": {
+                    "type": "integer"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Member"
+                    }
+                },
+                "members_count": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "twitter_link": {
+                    "type": "string"
+                },
+                "twitter_name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "verified": {
+                    "type": "boolean"
+                },
+                "visibility": {
+                    "type": "string"
+                },
+                "wallet": {
+                    "$ref": "#/definitions/models.Wallet"
+                },
+                "wallet_address": {
+                    "type": "string"
+                },
+                "wallet_connection": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UserAccountListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.UserWalletInfo"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.UserClaimFreeBalanceByVoucherRequest": {
+            "type": "object",
+            "required": [
+                "voucher_code"
+            ],
+            "properties": {
+                "voucher_code": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UserInfo": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "bio": {
+                    "type": "string"
+                },
+                "fullname": {
+                    "type": "string"
+                },
+                "github_link": {
+                    "type": "string"
+                },
+                "home_page": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "interests": {
+                    "type": "string"
+                },
+                "twitter_link": {
+                    "type": "string"
+                },
+                "twitter_name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UserListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.UserInfo"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.UserWalletInfo": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "type": "number"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "debt": {
+                    "type": "number"
+                },
+                "earnings": {
+                    "type": "number"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "free_balance": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "verified": {
+                    "type": "boolean"
+                },
+                "wallet_address": {
+                    "type": "string"
+                },
+                "wallet_connection": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UserWalletResponse": {
+            "type": "object",
+            "properties": {
+                "wallet_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.VerifyAdminResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/models.AdminCredential"
+                }
+            }
+        },
+        "models.VerifyAiModelRequest": {
+            "type": "object",
+            "properties": {
+                "commit_hash": {
+                    "type": "string",
+                    "default": "master"
+                },
+                "platforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.VerifyAiModelResponse": {
+            "type": "object",
+            "properties": {
+                "valid": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.VerifyCodeRequest": {
+            "type": "object",
+            "required": [
+                "code",
+                "email"
+            ],
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.VerifyResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/models.Credential"
+                }
+            }
+        },
+        "models.VerifyTask": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "model_id": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "state": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.VerifyUserAccountRequest": {
+            "type": "object",
+            "properties": {
+                "verified": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.VerifyWalletAddressRequest": {
+            "type": "object",
+            "required": [
+                "signature",
+                "wallet_address"
+            ],
+            "properties": {
+                "signature": {
+                    "type": "string"
+                },
+                "wallet_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Wallet": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "type": "number"
+                },
+                "debt": {
+                    "type": "number"
+                },
+                "earnings": {
+                    "type": "number"
+                },
+                "free_balance": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.WithdrawUserEarningsRequest": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "string"
+                },
+                "to_wallet": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.WithdrawalHistory": {
+            "type": "object",
+            "properties": {
+                "_": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "to_wallet": {
+                    "type": "string"
+                },
+                "tx_hash": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.WithdrawalListResponse": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.WithdrawalHistory"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "description": "Enter the token with the `Bearer: ` prefix, e.g. \"Bearer eyJhbGciO\".",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "externalDocs": {
+        "description": "OpenAPI",
+        "url": "https://swagger.io/resources/open-api/"
+    }
+}
