@@ -33,6 +33,7 @@
                 ],
                 "summary": "Get Api Key Balance",
                 "description": "",
+                "operationId": "getBalance",
                 "parameters": [
                     {
                         "type": "string",
@@ -77,6 +78,7 @@
                 ],
                 "summary": "Get Api Key Model Info",
                 "description": "",
+                "operationId": "getModelInfo",
                 "parameters": [
                     {
                         "type": "string",
@@ -128,6 +130,7 @@
                 ],
                 "summary": "Check Model Is Serving",
                 "description": "",
+                "operationId": "checkModelIsServing",
                 "parameters": [
                     {
                         "type": "string",
@@ -179,6 +182,7 @@
                 ],
                 "summary": "Get Model Statistics",
                 "description": "",
+                "operationId": "getModelStatistics",
                 "parameters": [
                     {
                         "type": "string",
@@ -239,6 +243,7 @@
                 ],
                 "summary": "Get cost to compute task by model api key",
                 "description": "",
+                "operationId": "getTaskCost",
                 "parameters": [
                     {
                         "type": "string",
@@ -290,6 +295,7 @@
                 ],
                 "summary": "Get Api Key Permission",
                 "description": "",
+                "operationId": "getApiPermission",
                 "parameters": [
                     {
                         "type": "string",
@@ -334,6 +340,7 @@
                 ],
                 "summary": "Get Api Key Statistics",
                 "description": "",
+                "operationId": "getApikeyStatistic",
                 "parameters": [
                     {
                         "type": "string",
@@ -387,6 +394,7 @@
                 ],
                 "summary": "Distribute Task (Api-Key)",
                 "description": "",
+                "operationId": "distributeTask",
                 "parameters": [
                     {
                         "type": "string",
@@ -440,6 +448,7 @@
                 ],
                 "summary": "Get Tasks Histories",
                 "description": "",
+                "operationId": "getTaskHistories",
                 "parameters": [
                     {
                         "type": "string",
@@ -498,6 +507,7 @@
                 ],
                 "summary": "Get Task Result",
                 "description": "",
+                "operationId": "getTaskResult",
                 "parameters": [
                     {
                         "type": "string",
