@@ -29,7 +29,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "api-key"
+                    "api-key", "", ""
                 ],
                 "summary": "Get Api Key Model Info",
                 "description": "",
