@@ -19,51 +19,6 @@
     "host": "",
     "basePath": "/api/v1/",
     "paths": {
-        "/api-key/balance": {
-            "get": {
-                "consumes": [
-                    "application/json",
-                    "application/x-www-form-urlencoded"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "api-key"
-                ],
-                "summary": "Get Api Key Balance",
-                "description": "",
-                "operationId": "getBalance",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "api-key",
-                        "name": "x-api-key",
-                        "in": "header"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/models.Wallet"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
         "/api-key/model/{id}/info": {
             "get": {
                 "consumes": [
